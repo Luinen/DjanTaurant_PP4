@@ -204,3 +204,22 @@ footer div a i {
         padding: 1rem;
     }
 }
+
+@media only screen and (max-width: 768px) {
+    main .food_container .food_card{
+       width: 100%;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    main .food_container .food_card{
+       font-size: .5rem;
+    }
+    main .food_container .food_card .food_info{
+        width: 100%;
+    }
+    main .food_container .food_card .food_pic{
+        display: none;
+    }
+}
+
