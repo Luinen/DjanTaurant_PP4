@@ -1,6 +1,7 @@
 from .import views
 from django.urls import path
+from .views import GenericView
 
-#urlpatterns = [
-#    path('', , name= 'home')
-#]
+urlpatterns = [
+    path('', GenericView, name= 'home'),
+]
