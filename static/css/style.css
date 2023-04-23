@@ -101,3 +101,22 @@ main .food_container .food_card{
     margin-bottom: 32px;
     display: flex;
 }
+
+main .food_container .food_card .food_info{
+    padding: 24px;
+    font-size: 0.8rem;
+    width: 65%;
+}
+
+.food_info h4 {
+    width: 100%;
+    text-align: right;
+}
+
+main .food_container .food_card .food_pic {
+    background-image: url('../pictures/pexels-ash-376464.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 35%;
+}
