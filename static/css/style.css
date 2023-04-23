@@ -120,3 +120,15 @@ main .food_container .food_card .food_pic {
     background-position: center;
     width: 35%;
 }
+
+.button_container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.button_container button {
+    padding: .5rem 0;
+    margin: 0 16px;
+    width: 100px;
+}
