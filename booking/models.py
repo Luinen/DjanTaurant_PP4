@@ -22,9 +22,39 @@ class User(models.Model):
 #        model = User
 
 class Food(models.Model):
+
+    MILK = 1
+    EGG = 2
+    PEANUTS = 3
+    FLOUR = 4
+
+    ALLERGY_CHOICES = (
+        (0, 'None'),
+        (1, 'Milk'),
+        (2, 'Egg'),
+        (3, 'Peanuts'),
+        (4, 'Flour'),
+    )
+
     food_name = models.CharField(max_length=80)
     food_ingredients = models.CharField(max_length=100)
-    food_allergy = models.CharField(max_length=100)
+    food_allergy = models.IntegerField(choices=ALLERGY_CHOICES, default=0)
     food_price = models.IntegerField()
     food_picture = models.ImageField()
     food_state = models.BooleanField(default=True)
+
+
+
+
+# class Allergy
+
+
+
+#class Tables(models.Model):
+#    tables_seat = models.IntegerField.choices()
+
+# class Booking(models.Model):
+#   booking_user_id
+#   booking_seat_id
+#   booking_datetime
+#   booking_status 0 new 1 rejected 2 accepted
