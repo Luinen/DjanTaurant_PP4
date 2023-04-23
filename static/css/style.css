@@ -132,3 +132,16 @@ main .food_container .food_card .food_pic {
     margin: 0 16px;
     width: 100px;
 }
+
+footer {
+    background-color: #F0F0F0;
+}
+
+#footer-container{
+    display: flex;
+    align-items: center;
+}
+
+#footer-container .footer-item {
+    width: 50%;
+}
