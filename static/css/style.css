@@ -223,3 +223,11 @@ footer div a i {
     }
 }
 
+@media only screen and (max-width: 450px) {
+    #footer-container {
+        display: block;
+    }
+    #footer-container div {
+        width: 100%;
+    }
+}
