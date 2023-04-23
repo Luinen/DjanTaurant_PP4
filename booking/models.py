@@ -7,7 +7,6 @@ from django.utils import timezone
 # Create your models here.
 
 class User(models.Model):
-    # user_id
     user_firstname = models.CharField(max_length=50)
     user_lastname = models.CharField(max_length=50)
     user_username = models.CharField(max_length=100)
@@ -26,6 +25,6 @@ class Food(models.Model):
     food_name = models.CharField(max_length=80)
     food_ingredients = models.CharField(max_length=100)
     food_allergy = models.CharField(max_length=100)
-    food_price = model.IntegerField()
-    food_picture = model.ImageField()
-    food_state = model.BooleanField(default=True)
+    food_price = models.IntegerField()
+    food_picture = models.ImageField()
+    food_state = models.BooleanField(default=True)
