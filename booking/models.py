@@ -22,3 +22,10 @@ class User(models.Model):
 #    class Meta:
 #        model = User
 
+class Food(models.Model):
+    food_name = models.CharField(max_length=80)
+    food_ingredients = models.CharField(max_length=100)
+    food_allergy = models.CharField(max_length=100)
+    food_price = model.IntegerField()
+    food_picture = model.ImageField()
+    food_state = model.BooleanField(default=True)
