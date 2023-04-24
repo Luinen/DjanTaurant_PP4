@@ -10,7 +10,7 @@
 </head>
 <body>
     <header class="headerbg-index">
-     
+        
         <!-- Navigation bar-->    
 
         <nav>
@@ -44,15 +44,17 @@
         <!-- Food container -->  
 
         <section class="food_container">
-    
+            {% for food in foods%}
             <div class="food_card">
                 <div class="food_info">
-                    <h2>Paprika Potatoes</h2>
+                    <h2>{{food}}</h2>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa velit voluptatem dolor libero modi sequi reprehenderit nobis</p>
-                    <h4>13 euros</h4>
+                    <h4>{{food}} euros</h4>
                 </div>
                 <div class="food_pic"></div>
             </div>
+            {% endfor %}
+            <!--
             <div class="food_card">
                 <div class="food_info">
                     <h2>Paprika Potatoes</h2>
@@ -79,7 +81,7 @@
                 </div>
                 <div class="food_pic"></div>
             </div>
-
+            -->
             <!-- Buttons -->  
 
             <div class="button_container">
