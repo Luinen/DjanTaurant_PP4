@@ -48,7 +48,7 @@ class Food(models.Model):
 
 
 
-class Allergenes(models.Model):
+class Allergen(models.Model):
     allergen_name = models.CharField(max_length=25)
     food_name = models.CharField(max_length=80)
     
