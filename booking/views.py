@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 from django.http import HttpResponse
 from django.template import loader
+from booking.models import Food
 
 # Create your views here.
 
@@ -10,9 +11,10 @@ from django.template import loader
 
 def mainPage(request):
     response = loader.get_template('index.html')
-    food = ['Spagetti', 15, 'Fish and chips', 18, 'Beef Burger', 21, 'Irish Breakfast', 12]
+    food = Food.objects.all()
     context = {
         'foods' : food
     }
+    print(food)
     return HttpResponse(response.render(context, request))
 

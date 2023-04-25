@@ -20,7 +20,7 @@ header {
 
 .headerbg-index {
     background-position: 50% 85%;
-    background-image: url('../pictures/index_bg.jpg');
+    background-image: url('https://res.cloudinary.com/dwreu1xik/image/upload/v1682253518/djantaurant/index_ikifjy.jpg');
 }
 
 .headerbg-booking {
@@ -120,7 +120,7 @@ main .food_container .food_card .food_info{
 }
 
 main .food_container .food_card .food_pic {
-    background-image: url('../pictures/pexels-ash-376464.jpg');
+    background-image: var(--image, url("https://res.cloudinary.com/dwreu1xik/image/upload/v1682253516/djantaurant/pancake_qt8ony.jpg"));
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

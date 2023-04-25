@@ -1,4 +1,6 @@
-{%include 'templates/header.html'%}
+{% extends 'template.html'%}
+{%block content%}
+
     <main>
         <section class="about">
     
@@ -13,11 +15,11 @@
             {% for food in foods%}
             <div class="food_card">
                 <div class="food_info">
-                    <h2>{{food}}</h2>
+                    <h2>{{food.name}}</h2>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa velit voluptatem dolor libero modi sequi reprehenderit nobis</p>
-                    <h4>{{food}} euros</h4>
+                    <h4>{{food.price}} euros</h4>
                 </div>
-                <div class="food_pic"></div>
+                <div class="food_pic" background-image=url("{{food.picture}}")></div>
             </div>
             {% endfor %}
             <!--
@@ -57,66 +59,4 @@
         </section>
     </main>
 
-    <!-- Footer -->  
-
-    <footer>
-        <div id="footer-container">
-            <div class="footer-item">
-                <h1>About us</h1>
-                <div>
-                    <p>Address: Dublin </p>
-                    <p>Phone number: +353 85 9999 99</p>
-                    <p>Email: myrestaurant@best.com</p>
-                </div>
-            </div>
-            <div class="footer-item">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d76267.46336619613!2d-6.422148280328102!3d53.31893894666118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sie!4v1681846127752!5m2!1sen!2sie" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-
-        <!-- Social Links -->  
-
-        <div class="footer-social">
-            <a href="https://facebook.com" target="_blank" rel="noopener">
-                <i class="fa-brands fa-facebook"></i>
-                <span>Facebook</span>
-            </a>
-            <a href="https://twitter.com/?lang=en" target="_blank" rel="noopener">
-                <i class="fa-brands fa-twitter"></i>
-                <span>Twitter</span>
-            </a>
-            <a href="https://www.google.com/maps/@53.3189389,-6.4221483,12z" target="_blank">
-             <i class="fa-sharp fa-solid fa-location-dot"></i>
-             <span>MyRestaurant</span>
-            </a>
-        </div>
-    </footer>
-
-    <div id="Login" class="modal" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Sign In</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput2" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleFormControlInput2">
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Login</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    <script src="https://kit.fontawesome.com/77887c0ffe.js" crossorigin="anonymous"></script>
-</body>
-</html>
+{%endblock%}
