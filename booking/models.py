@@ -45,6 +45,11 @@ class Food(models.Model):
     picture = models.ImageField()
     state = models.BooleanField(default=True)
 
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
 
 
 
