@@ -120,7 +120,6 @@ main .food_container .food_card .food_info{
 }
 
 main .food_container .food_card .food_pic {
-    background-image: var(--image, url("https://res.cloudinary.com/dwreu1xik/image/upload/v1682253516/djantaurant/pancake_qt8ony.jpg"));
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

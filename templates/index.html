@@ -13,14 +13,14 @@
 
         <section class="food_container">
             {% for food in foods%}
-            <div class="food_card">
-                <div class="food_info">
-                    <h2>{{food.name}}</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa velit voluptatem dolor libero modi sequi reprehenderit nobis</p>
-                    <h4>{{food.price}} euros</h4>
-                </div>
-                <div class="food_pic" background-image=url("{{food.picture}}")></div>
-            </div>
+                    <div class="food_card">
+                        <div class="food_info">
+                            <h2>{{food.name}}</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa velit voluptatem dolor libero modi sequi reprehenderit nobis</p>
+                            <h4>{{food.price}} euros</h4>
+                        </div>
+                        <div class="food_pic" style="background-image: url('https://res.cloudinary.com/dwreu1xik/image/upload/v1682441809/{{food.picture}}');"></div>
+                    </div>
             {% endfor %}
             <!--
             <div class="food_card">

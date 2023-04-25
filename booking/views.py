@@ -15,6 +15,8 @@ def mainPage(request):
     context = {
         'foods' : food
     }
-    print(food)
     return HttpResponse(response.render(context, request))
 
+def signUp(request):
+    response = loader.get_template('sign_up')
+    return HttpResponse(response.render(context, request))
