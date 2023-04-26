@@ -13,34 +13,16 @@ class User(models.Model):
     email = models.EmailField('email address', max_length=100, unique=True)
     password = models.CharField(max_length=50)
     date_joined = models.DateTimeField(default=timezone.now)
-    #is_staff = models.BooleanField(default=False)
 
 class Staff(models.Model):
     email = models.EmailField('email address', max_length=100, unique=True)
 
-#class UserForm(forms.ModelForm):
-#    password = forms.CharField(widget=forms.PasswordInput)
-#    class Meta:
-#        model = User
 
 class Food(models.Model):
 
-    #MILK = 1
-    #EGG = 2
-    #PEANUTS = 3
-    #FLOUR = 4
-
-    #ALLERGY_CHOICES = (
-    #    (0, 'None'),
-    #    (1, 'Milk'),
-    #    (2, 'Egg'),
-    #    (3, 'Peanuts'),
-    #    (4, 'Flour'),
-    #)
 
     name = models.CharField(max_length=80)
     ingredients = models.CharField(max_length=100)
-    #allergy = models.IntegerField(choices=ALLERGY_CHOICES, default=0)
     price = models.IntegerField()
     picture = models.ImageField()
     state = models.BooleanField(default=True)
@@ -52,13 +34,10 @@ class Food(models.Model):
         return self.name
 
 
-
 class Allergen(models.Model):
     allergen_name = models.CharField(max_length=25)
     food_name = models.CharField(max_length=80)
     
-
-
 
 #class Tables(models.Model):
 #    tables_seat = models.IntegerField.choices()

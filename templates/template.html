@@ -20,7 +20,7 @@
                 <mark>Restaurant</mark>
                 <div id="nav-container"> 
                     <a href="/">Home</a>
-                    <a href="{% url 'booking' %}">Booking</a>
+                    <a href="{% url 'reservation' %}">Booking</a>
                     <a href="">Menu</a>
                 </div>
             </div>
@@ -28,7 +28,7 @@
             <!-- Sign up/In-->  
 
             <div class="class-sign">
-                <a href="{% url 'sign_up' %}" class="sign">Sign up</a>
+                <button class="sign" data-bs-toggle="modal" data-bs-target="#Login">Sign up</button>
                 <button class="sign" data-bs-toggle="modal" data-bs-target="#Login">Sign in</button>
             </div>
         </nav>
