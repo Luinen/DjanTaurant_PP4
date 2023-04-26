@@ -7,6 +7,7 @@ from booking.models import Food
 
 # Create your views here.
 
+
 def mainPage(request):
     response = loader.get_template('index.html')
     food = Food.objects.all()
@@ -20,3 +21,12 @@ class Reservation(View):
 
     def get(self, request):
         return render(request, "reservation.html")
+
+class Menu(View):
+
+    def get(self, request):
+        food = Food.objects.all()
+        context = {
+            'foods' : food
+            }
+        return render(request, "menu.html", context=context)
