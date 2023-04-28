@@ -30,8 +30,14 @@
             <!-- Sign up/In-->  
 
             <div class="class-sign">
-                <button class="sign" data-bs-toggle="modal" data-bs-target="#Login">Sign up</button>
-                <button class="sign" data-bs-toggle="modal" data-bs-target="#Login">Sign in</button>
+                {% if user.is_authenticated %}
+                <a class="sign" href="{% url 'account_logout'%}">Logout</a>
+                {% else %}
+                <a class="sign" href="{% url 'account_signup'%}">Sign up</a>
+                <a class="sign" href="{% url 'account_login'%}">Sign in</a>
+                <!--button class="sign" data-bs-toggle="modal" data-bs-target="#Login">Sign up</button>
+                <button class="sign" data-bs-toggle="modal" data-bs-target="#Login">Sign in</button-->
+                {% endif %} 
             </div>
         </nav>
 
