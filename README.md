@@ -1,10 +1,10 @@
-# Battleship OMEGA
+# DJANTAURANT
   
 
-**Welcome to [Battleship OMEGA](https://battleshipomega.herokuapp.com/)!**
+**Welcome to [DJANTAURANT](https://battleshipomega.herokuapp.com/)!**
   
 
-Battleship OMEGA is a single player game against the AI. This python terminal small game gives you 5 minutes of fun for people who like guessing and luck. Try to find your opponent's ships before it finds yours. The game is simple and enjoyable. Good luck!
+Djantaurant is Dublin's most trusted family-friendly restaurant, where the guest feels like a guest, which is like home. The goals of this  project is to give a user the ability to book appointments, update or cancel. The Target audiance is 
 
 ![responsive_pic](/assets/images/battleship_omega.png)
 
