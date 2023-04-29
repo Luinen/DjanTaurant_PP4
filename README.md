@@ -1,108 +1,92 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Battleship OMEGA
+  
 
-Welcome Luinen,
+**Welcome to [Battleship OMEGA](https://battleshipomega.herokuapp.com/)!**
+  
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Battleship OMEGA is a single player game against the AI. This python terminal small game gives you 5 minutes of fun for people who like guessing and luck. Try to find your opponent's ships before it finds yours. The game is simple and enjoyable. Good luck!
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+![responsive_pic](/assets/images/battleship_omega.png)
 
-## Gitpod Reminders
+## Features
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+I explain the website features below.
 
-`python3 -m http.server`
+### **Existing features**
+  
 
-A blue button should appear to click: _Make Public_,
+- **Tutorial**
+  - The tutorial understands the game well for the users.
+  - If the users knows the rules, they can skip this part by answering no.
+  - Any other response will ask the question again.
 
-Another blue button should appear to click: _Open Browser_.
+  ![tutorial](/assets/images/tutorial_battleship.png)
+ 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+- **Grid**
+  - The users can decide the board size. There are 2 options. 5x5 or 10x10.
 
-A blue button should appear to click: _Make Public_,
+![board](/assets/images/grid_battleship.png)
 
-Another blue button should appear to click: _Open Browser_.
+- **Placing the ships**
+  - After the grid selection, the users can decide where they want to place their ships.
+  - The users don't see the the computer choices.
+  - The AI randomly generates ships on the board.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+- **Target system**
+  - Everything is ready to play. The users start and then select the first target and after that the AI does the same.
 
-To log into the Heroku toolbelt CLI:
+![target_system](/assets/images/target_battleship.png)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+- **End game**
+  - The game ends if the user or the computer lose all of their ships.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+![game_over](/assets/images/game_over_battleship.png)
 
-------
+### **Features left to implement**
+- 2nd board for a longer gameplay
+- Multiplayer mode
 
-## Release History
+## Testing
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+  - I tried to test as many thing as possible on my phone. 
+  - I checked all the answers in the tutorial. 
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+#### **Validator Testing**
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+- **PYTHON**
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+  - No errors were returned.
+  ![python_checker](/assets/images/python_checker.png)
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+## Bugs
+- Solved Bugs
+  - The AI chose the same location and started the game with only 3 or 4 ships.
+  - It was possible if the user fired the same spot in the previous rounds.
+  - The user was able to use numbers in the tutorial and caused an error. 
+  - Fixed an index error, when the users want to put a ship, but it is out of the board range. 
+- Unsolved Bugs
+  - Unfortunately, I used Heroku and deployed my project, but I couldn't type anything on that site after that. I tried incognito mode, firefox and chrome, but nothing changed. It freezes all the time. I spent 2,5 hours with tutor assistance, they tried many things, but they didn't find the solution.  I also want to thank you from here. It works on other computers.
+  - If the users enter nothing when they want to shoot, an error message pop up.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+## Deployment  
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+- The site was deployed to GitHub pages. The steps to deploy are as follows: 
+  1. In the GitHub repository, navigate to the Settings tab.
+  2. From the source section drop-down menu, select the Master Branch.
+  3. Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+  4. The heroku live link can be found here: https://battleshipomega.herokuapp.com/
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+- If you want to clone the repository:
+  1. In the GitHub repository, click on the 'Code'.
+  2. Click 'Open with GitHub Desktop' to clone and open the repository with GitHub Desktop.
+  3. Click 'Choose...' and, using the Finder window, navigate to a local path where you want to clone the repository. 
+  4. Click Clone.  
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+## Credits
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+#### Content
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+- Pirate slangs were taken from [Islads](https://www.islands.com/40-useful-pirate-phrases-for-national-talk-like-pirate-day/).

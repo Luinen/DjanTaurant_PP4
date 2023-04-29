@@ -27,7 +27,7 @@ class Food(models.Model):
     price = models.IntegerField()
     picture = models.ImageField()
     state = models.BooleanField(default=True)
-    self.allergens.all = models.ManyToManyField(Allergen)
+    # self.allergens.all = models.ManyToManyField(Allergen)
 
     class Meta:
         ordering = ['name']
@@ -35,10 +35,10 @@ class Food(models.Model):
     def __str__(self):
         return self.name
 
-    def get_allergen_names(self):
-        return ",".join([str(allergen) for allergen in self.allergens.all()])
+    # def get_allergen_names(self):
+    #    return ",".join([str(allergen) for allergen in self.allergens.all()])
 
-    allergen = models.CharField(max_length=200, blank=True, null=True, default=get_allergen_names)
+    # allergen = models.CharField(max_length=200, blank=True, null=True, default=get_allergen_names)
 
 
 class Allergen(models.Model):
