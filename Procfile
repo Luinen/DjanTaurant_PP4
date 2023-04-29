@@ -1,1 +1,1 @@
-web: gunicorn djantaurant.wsgi:booking
+web: gunicorn djantaurant.wsgi:application
