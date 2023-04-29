@@ -126,6 +126,10 @@ main .food_container .food_card .food_pic {
     width: 35%;
 }
 
+.ingredients {
+    font-size: 14px;
+}
+
 /* Buttons */
 
 .button_container {
