@@ -4,7 +4,7 @@
 **Welcome to [DJANTAURANT](https://djantaurant.herokuapp.com/)!**
   
 
-Djantaurant is Dublin's most trusted family-friendly restaurant, where the guest feels like a guest, which is like home. The goals of this  project is to give a user the ability to book appointments, update or cancel. The Target audiance is 
+Djantaurant is Dublin's most trusted family-friendly restaurant, where the guest feels like a guest, which is like home. The goals of this  project is to give a user the ability to book appointments, update or cancel. The target audience is families and couples who want to enjoy the finest selection of ingredients.
 
 ![responsive_pic](/media/responsive.png)
 
@@ -17,8 +17,6 @@ I explain the website features below.
 
 - **Navigation bar**
  - This section will allow the user to easily navigate from page to page across all devices without having any issues. 
-
-  ![nav bar](/media)
  
 
 ### **Features left to implement**
