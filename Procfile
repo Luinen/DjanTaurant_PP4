@@ -1,1 +1,1 @@
-web: gunicorn djantaurant.wsgi:application
+web: gunicorn djantaurant2.wsgi:application

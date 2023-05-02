@@ -48,11 +48,12 @@ class Allergen(models.Model):
     def __str__(self):
         return self.allergen_name
 
-# class Tables(models.Model):
-#    tables_seat = models.IntegerField.choices()
 
-# class Booking(models.Model):
-#   booking_user_id
-#   booking_seat_id
-#   booking_datetime
-#   booking_status 0 new 1 rejected 2 accepted
+class Table(models.Model):
+    capacity = models.IntegerField()
+
+
+class Booking(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    table_id = models.ForeignKey(Table, on_delete=models.CASCADE)
+    datetime = models.DateTimeField()
