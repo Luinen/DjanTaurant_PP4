@@ -50,14 +50,14 @@ class Allergen(models.Model):
         return self.allergen_name
 
 
-#class Table(models.Model):
-#    capacity = models.IntegerField()
+class Table(models.Model):
+    capacity = models.IntegerField()
 
 
 class Booking(models.Model):
 
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-#    table_id = models.ForeignKey(Table, on_delete=models.CASCADE)
+    table_id = models.ForeignKey(Table, on_delete=models.CASCADE)
     datetime = models.DateTimeField()
 
     def __str__(self):
