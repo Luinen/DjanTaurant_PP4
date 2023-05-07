@@ -4,7 +4,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from django.template import loader
 from booking.models import Food, Booking, Table
-from django import forms
 
 # Create your views here.
 
@@ -50,4 +49,3 @@ class Menu(View):
             'foods': food
             }
         return render(request, "menu.html", context=context)
-

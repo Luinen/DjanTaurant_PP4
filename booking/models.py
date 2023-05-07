@@ -51,6 +51,7 @@ class Allergen(models.Model):
 
 
 class Table(models.Model):
+    
     capacity = models.IntegerField()
 
 
