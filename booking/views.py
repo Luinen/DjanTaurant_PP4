@@ -3,6 +3,8 @@ from django.views import generic
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from django.template import loader
+from django import forms
+from .forms import ReservationForm
 from booking.models import Food, Booking, Table
 
 # Create your views here.
@@ -22,11 +24,6 @@ class Reservation(View):
     def get(self, request):
         return render(request, "reservation.html")
 
-
-class ReservationForm(forms.Form):
-    reservation_start = forms.DateTimeField(label="Start of Reservation")
-    guests = forms.IntegerField(label="Number of Guests")
-    
 
 
 def bookingCreate(request):
