@@ -38,6 +38,15 @@ def bookingCreate(request):
     #return HttpResponseRedirect("reservation/")
 
 
+def  get_form(request):
+    if request.method == "POST":
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect("Thank You")
+    else:
+        form = ReservationForm()
+    return render(request, "reservation.html", {"form": form})
+
 class Menu(View):
 
     def get(self, request):

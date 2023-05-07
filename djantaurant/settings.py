@@ -50,10 +50,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'django_summernote',
+    'crispy_forms',
     'booking',
 ]
 
 SITE_ID = 1
+
+CRISPY_TEMPLATE_PACK = 'bootsrap4'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

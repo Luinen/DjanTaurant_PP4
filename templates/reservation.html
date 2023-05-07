@@ -3,9 +3,16 @@
 {% load static %}
 
 {%block content%}
+<form action="makereservation/" method="POST"></form>
+    <h2>{{ reservationform.reservation_start }}</h2>
+    <h2>{{ reservationform.guests }}</h2>
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Check availability">
+</form>
 
-<h2>{{ reservationform.reservation_start }}</h2>
-<h2>{{ reservationform.guests }}</h2>
+
+
 <div id="booking" class="section">
     <div class="section-center">
         <div class="container">
