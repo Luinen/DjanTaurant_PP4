@@ -5,6 +5,7 @@ from django.views import View
 from django.template import loader
 from django import forms
 from .forms import ReservationForm
+from datetime import datetime as dt
 from booking.models import Food, Booking, Table
 
 # Create your views here.
@@ -38,9 +39,18 @@ class Reservation(View):
 def bookingCreate(request):
     print("/////////////////////////////")
     form = ReservationForm(request.POST)
-    print(form.is_valid())
     if form.is_valid():
-        return HttpResponse("Thank You")
+        data = form.cleaned_data
+        reservation_year = data["reservation_start"].year
+        reservation_month = data["reservation_start"].month
+        reservation_day = data["reservation_start"].day
+        reservation_hour = data["time"]
+        reservation_minutes = data["time_minutes"]
+        guests = data["guests"]
+
+        t = dt(reservation_year, reservation_month, reservation_day, reservation_hour, reservation_minutes)
+        return HttpResponse(f'Reservation Start: {t.strftime("%m/%d/%Y, %H:%M")},  {guests} Person(s)')
+       # return HttpResponse(f'Reservation Start:{reservation_year}/{reservation_month}/{reservation_day}, {reservation_hour}:{reservation_minutes},  {guests} Person(s)')
     else:
         return HttpResponse("No reservation made")
      #   print(form.cleaned_data["reservation_start"])
