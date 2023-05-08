@@ -21,8 +21,17 @@ def mainPage(request):
 
 class Reservation(View):
 
+   
+
     def get(self, request):
-        return render(request, "reservation.html")
+        form = ReservationForm
+        context = {
+            "form": form
+        }
+        response = loader.get_template('reservation.html')
+        return HttpResponse(response.render(context, request))
+       # return render(request, "reservation.html")
+    
 
 
 
@@ -37,7 +46,7 @@ def bookingCreate(request):
      #   print(form.cleaned_data["reservation_start"])
     #return HttpResponseRedirect("reservation/")
 
-
+'''
 def  get_form(request):
     if request.method == "POST":
         form = ReservationForm(request.POST)
@@ -46,6 +55,7 @@ def  get_form(request):
     else:
         form = ReservationForm()
     return render(request, "reservation.html", {"form": form})
+'''
 
 class Menu(View):
 

@@ -2,7 +2,10 @@
 
 {% load static %}
 
+{% load crispy_forms_tags %}
+
 {%block content%}
+<!--
 <form action="makereservation/" method="POST"></form>
     <h2>{{ reservationform.reservation_start }}</h2>
     <h2>{{ reservationform.guests }}</h2>
@@ -10,9 +13,9 @@
     {{form}}
     <input type="submit" value="Check availability">
 </form>
+-->
 
-
-
+<!--
 <div id="booking" class="section">
     <div class="section-center">
         <div class="container">
@@ -31,13 +34,13 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <span class="form-label">Time</span>
-                                            <input id="reservation_start" class="form-control" type="datetime-local">
+                                            <input id="reservation_start" class="form-control" type="datetime-local" value="reservation_start">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <span class="form-label">Guests</span>
-                                            <input id="guests" class="form-control" type="number">
+                                            <input id="guests" class="form-control" type="number" value="guests">
                                         </div>
                                     </div>
                                 </div>
@@ -54,4 +57,12 @@
         </div>
     </div>
 </div>
+-->
+
+    <form action="makereservation/" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="OK">
+    </form>
+
 {%endblock%}
