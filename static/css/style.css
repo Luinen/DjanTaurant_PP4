@@ -185,6 +185,53 @@ footer div a span {
     margin-left: 5px;
 }
 
+.login {
+    padding: 0 5rem 3rem 5rem;
+    max-width: 400px;
+    margin: auto;
+}
+
+.login input[type=text],  .login input[type=password] {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 1rem;
+}
+
+.primaryAction {
+    padding: 0.6rem 1rem;
+    background-color: rgb(144, 214, 214);
+    border: none;
+    border-radius: 4px;
+}
+
+.primaryAction:hover {
+    background-color: rgb(62, 141, 161);
+    color: white;
+}
+
+.signup {
+    padding: 0 5rem 3rem 5rem;
+    max-width: 400px;
+    margin: auto;
+}
+
+.signup input[type=text],  .signup input[type=email],.signup input[type=password] {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 1rem;
+}
+
+.signup button {
+    padding: 0.6rem 1rem;
+    background-color: rgb(144, 214, 214);
+    border: none;
+    border-radius: 4px;
+}
+
+.signup button:hover {
+    background-color: rgb(62, 141, 161);
+    color: white;
+}
 
 /* media query */
 
@@ -216,30 +263,6 @@ footer div a span {
         padding: .8rem 0;
         font-size: 1.3rem!important;
     }
-}
-
-.login {
-    padding: 0 5rem 3rem 5rem;
-    max-width: 400px;
-    margin: auto;
-}
-
-.login input[type=text],  .login input[type=password] {
-    display: block;
-    width: 100%;
-    padding: 0.6rem 1rem;
-}
-
-.primaryAction {
-    padding: 0.6rem 1rem;
-    background-color: rgb(144, 214, 214);
-    border: none;
-    border-radius: 4px;
-}
-
-.primaryAction:hover {
-    background-color: rgb(62, 141, 161);
-    color: white;
 }
 
 @media only screen and (max-width: 450px) {
