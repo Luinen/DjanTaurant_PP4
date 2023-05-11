@@ -5,64 +5,14 @@
 {% load crispy_forms_tags %}
 
 {%block content%}
-<!--
-<form action="makereservation/" method="POST"></form>
-    <h2>{{ reservationform.reservation_start }}</h2>
-    <h2>{{ reservationform.guests }}</h2>
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" value="Check availability">
-</form>
--->
 
-<!--
-<div id="booking" class="section">
-    <div class="section-center">
-        <div class="container">
-            <div class="row">
-                <div class="booking-form">
-                    <form action="makereservation/" method="POST">
-                        {% csrf_token %}
-                        <div class="row no-margin">
-                            <div class="col-md-3">
-                                <div class="form-header">
-                                    <h2>Book Now</h2>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="row no-margin">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <span class="form-label">Time</span>
-                                            <input id="reservation_start" class="form-control" type="datetime-local" value="reservation_start">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <span class="form-label">Guests</span>
-                                            <input id="guests" class="form-control" type="number" value="guests">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-btn">
-                                    <button class="submit-btn">Check availability</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
--->
+
 
     <form action="makereservation/" method="POST">
         {% csrf_token %}
         {{form}}
         <input type="submit" value="OK">
     </form>
+
 
 {%endblock%}
