@@ -169,18 +169,22 @@ footer div a {
 }
 
 .footer-social {
-    padding: .5rem 10%;
+    padding: .5rem 20%;
+    margin: auto;
     background-color: #C8C8C8;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.footer-social a {
+    text-decoration: none;
 }
 
 footer div a span {
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
-footer div a i {
-    width: 30px;
-}
 
 /* media query */
 
@@ -212,6 +216,30 @@ footer div a i {
         padding: .8rem 0;
         font-size: 1.3rem!important;
     }
+}
+
+.login {
+    padding: 0 5rem 3rem 5rem;
+    max-width: 400px;
+    margin: auto;
+}
+
+.login input[type=text],  .login input[type=password] {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 1rem;
+}
+
+.primaryAction {
+    padding: 0.6rem 1rem;
+    background-color: rgb(144, 214, 214);
+    border: none;
+    border-radius: 4px;
+}
+
+.primaryAction:hover {
+    background-color: rgb(62, 141, 161);
+    color: white;
 }
 
 @media only screen and (max-width: 450px) {
