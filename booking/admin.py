@@ -7,7 +7,7 @@ from .models import User, Staff, Food, Allergen, Booking, Table
 #@admin.register(Food)
 #class FoodAdmin(SummernoteModelAdmin):
 
-
+admin.site.register(User)
 admin.site.register(Food)
 admin.site.register(Booking)
 admin.site.register(Table)

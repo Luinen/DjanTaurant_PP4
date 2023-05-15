@@ -6,7 +6,7 @@ from django.template import loader
 from django import forms
 from .forms import ReservationForm
 from datetime import datetime as dt
-from booking.models import Food, Booking, Table
+from booking.models import Food, Booking, User, Table
 from django.contrib import messages
 
 # Create your views here.
@@ -48,11 +48,13 @@ class Reservation(View):
             t = dt(reservation_year, reservation_month, reservation_day, reservation_hour, reservation_minutes)
             #messages.info(request, Booking.objects.get())
             b = Booking.objects.create(
-                user_id = User.objects.get([0]),
-                table_id = 1,
-                datetime = t
+                user_id=User.objects.all()[0],
+                table_id= Table.objects.all()[0],
+                datetime=t
             )
             b.save()
+            # print(User.objects.all()[0])
+            return HttpResponseRedirect("/reservation")
             return HttpResponse(self.response.render(self.context, request))
         
         else:
