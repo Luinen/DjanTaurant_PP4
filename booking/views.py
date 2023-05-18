@@ -46,16 +46,19 @@ class Reservation(View):
             guests = data["guests"]
 
             t = dt(reservation_year, reservation_month, reservation_day, reservation_hour, reservation_minutes)
+            if t < dt.now():
+                messages.info(request, "Nem Sikeres a foglalas")
+                return HttpResponseRedirect("/reservation")
             #messages.info(request, Booking.objects.get())
             b = Booking.objects.create(
                 user_id=User.objects.all()[0],
-                table_id= Table.objects.all()[0],
+                table_id=Table.objects.all()[0],
                 datetime=t
             )
             b.save()
             # print(User.objects.all()[0])
+            messages.info(request, "Sikeres foglalas")
             return HttpResponseRedirect("/reservation")
-            return HttpResponse(self.response.render(self.context, request))
         
         else:
             messages.info(request, "Nem Sikerult")

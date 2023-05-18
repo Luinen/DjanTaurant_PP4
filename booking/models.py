@@ -62,4 +62,4 @@ class Booking(models.Model):
     datetime = models.DateTimeField()
 
     def __str__(self):
-        return self.user_id.username + str(self.table_id.capacity)
+        return self.user_id.username +' '+ str(self.table_id.capacity) +' '+ self.datetime.strftime("%m/%d/%Y, %H:%M:%S")
