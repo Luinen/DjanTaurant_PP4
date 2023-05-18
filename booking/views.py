@@ -6,7 +6,8 @@ from django.template import loader
 from django import forms
 from .forms import ReservationForm
 from datetime import datetime as dt
-from booking.models import Food, Booking, User, Table
+from booking.models import Food, Booking, Table
+from django.contrib.auth.models import User
 from django.contrib import messages
 
 # Create your views here.
@@ -49,9 +50,14 @@ class Reservation(View):
             if t < dt.now():
                 messages.info(request, "Nem Sikeres a foglalas")
                 return HttpResponseRedirect("/reservation")
+            if not request.user.is_authenticated:
+                messages.info(request, "Bejelentkezes szukseges")
+                return HttpResponseRedirect("/reservation")
+            user = User.objects.filter(username = request.user)[0]
+            print(user)
             #messages.info(request, Booking.objects.get())
             b = Booking.objects.create(
-                user_id=User.objects.all()[0],
+                user_id=user,
                 table_id=Table.objects.all()[0],
                 datetime=t
             )

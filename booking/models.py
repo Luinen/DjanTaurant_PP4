@@ -3,10 +3,11 @@ from django import forms
 from datetime import datetime
 from cloudinary.models import CloudinaryField
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your models here.
 
-
+'''
 class User(models.Model):
     firstname = models.CharField(max_length=50)
     lastname = models.CharField(max_length=50)
@@ -18,7 +19,7 @@ class User(models.Model):
 
 class Staff(models.Model):
     email = models.EmailField('email address', max_length=100, unique=True)
-
+'''
 
 class Food(models.Model):
 
@@ -51,8 +52,11 @@ class Allergen(models.Model):
 
 
 class Table(models.Model):
-    
+    #restaurant_name = models.CharField(max_length=30)
     capacity = models.IntegerField()
+
+    def __str__(self):
+        return self.restaurant_name
 
 
 class Booking(models.Model):
