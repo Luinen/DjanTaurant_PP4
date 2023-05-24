@@ -51,7 +51,8 @@ class Reservation(View):
             user = User.objects.filter(username=request.user)[0]
 
             t = dt(reservation_year, reservation_month, reservation_day, reservation_hour, reservation_minutes)
-            res_ontime = Booking.objects.filter(datetime__range= [t, t + timedelta(hours=2)])
+            res_ontime = Booking.objects.filter(datetime__range= [t - timedelta(hours=2), t])
+            #res_ontime = Booking.objects.filter(datetime__range=[t, t + timedelta(hours=2)])
             print(res_ontime)
             if t < dt.now():
                 messages.info(request, "Nem Sikeres a foglalas")
@@ -62,7 +63,9 @@ class Reservation(View):
             total = 0
             for i in res_ontime:
                 total += i.guest_number
-            #if (total + guests) <
+            if (total + guests) > restaurant.capacity:
+                messages.info(request, "Tul sokan vannak")
+                return HttpResponseRedirect("/reservation")
             #messages.info(request, Booking.objects.get())
             b = Booking.objects.create(
                 user= user,
@@ -115,8 +118,9 @@ def  get_form(request):
 class Menu(View):
 
     def get(self, request):
+        response = loader.get_template('index.html')
         food = Food.objects.all()
         context = {
             'foods': food
-            }
-        return render(request, "menu.html", context=context)
+        }
+        return HttpResponse(response.render(context, request))
