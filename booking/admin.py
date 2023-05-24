@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Food, Allergen, Booking, Table
+from .models import Food, Allergen, Capacity, Booking
 
 # Register your models here.
 
@@ -10,4 +10,4 @@ from .models import Food, Allergen, Booking, Table
 
 admin.site.register(Food)
 admin.site.register(Booking)
-admin.site.register(Table)
+admin.site.register(Capacity)

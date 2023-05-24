@@ -50,20 +50,29 @@ class Allergen(models.Model):
     def __str__(self):
         return self.allergen_name
 
-
+'''
 class Table(models.Model):
-    #restaurant_name = models.CharField(max_length=30)
+    table_id = models.AutoField()
+    restaurant_name = models.CharField(max_length=30)
+    capacity = models.IntegerField()
+
+    #def __str__(self):
+    #    return self.restaurant_name
+'''
+
+class Capacity(models.Model):
+    name = models.CharField(max_length=30, primary_key= True)
     capacity = models.IntegerField()
 
     def __str__(self):
-        return self.restaurant_name
-
+        return self.name
 
 class Booking(models.Model):
 
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    table_id = models.ForeignKey(Table, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    restaurant = models.ForeignKey(Capacity, on_delete=models.CASCADE)
     datetime = models.DateTimeField()
+    guest_number = models.IntegerField()
 
     def __str__(self):
-        return self.user_id.username +' '+ str(self.table_id.capacity) +' '+ self.datetime.strftime("%m/%d/%Y, %H:%M:%S")
+        return self.user.username +' '+ str(self.guest_number) +' '+ self.datetime.strftime("%m/%d/%Y, %H:%M:%S")

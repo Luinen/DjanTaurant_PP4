@@ -6,7 +6,8 @@ from django.template import loader
 from django import forms
 from .forms import ReservationForm
 from datetime import datetime as dt
-from booking.models import Food, Booking, Table
+from datetime import timedelta
+from booking.models import Food, Capacity, Booking
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -45,24 +46,32 @@ class Reservation(View):
             reservation_hour = data["time"]
             reservation_minutes = data["time_minutes"]
             guests = data["guests"]
+            restaurant_name = 'Djantaurant'
+            restaurant = Capacity.objects.filter(name = restaurant_name)[0]
+            user = User.objects.filter(username=request.user)[0]
 
             t = dt(reservation_year, reservation_month, reservation_day, reservation_hour, reservation_minutes)
+            res_ontime = Booking.objects.filter(datetime__range= [t, t + timedelta(hours=2)])
+            print(res_ontime)
             if t < dt.now():
                 messages.info(request, "Nem Sikeres a foglalas")
                 return HttpResponseRedirect("/reservation")
             if not request.user.is_authenticated:
                 messages.info(request, "Bejelentkezes szukseges")
                 return HttpResponseRedirect("/reservation")
-            user = User.objects.filter(username = request.user)[0]
-            print(user)
+            total = 0
+            for i in res_ontime:
+                total += i.guest_number
+            #if (total + guests) <
             #messages.info(request, Booking.objects.get())
             b = Booking.objects.create(
-                user_id=user,
-                table_id=Table.objects.all()[0],
-                datetime=t
+                user= user,
+                restaurant= restaurant,
+                datetime= t,
+                guest_number= guests
             )
             b.save()
-            # print(User.objects.all()[0])
+            print(User.objects.all()[0])
             messages.info(request, "Sikeres foglalas")
             return HttpResponseRedirect("/reservation")
         
