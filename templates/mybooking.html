@@ -21,6 +21,9 @@
                             <h2>{{booking.restaurant.name}}</h2>
                             <p class="ingredients">{{booking.datetime}}</p>
                             <h4>{{booking.guest_number}}/person(s)</h4>
+                            <button type="button">
+                            <a href="delete/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}">Delete</a>
+                            </button>
                         </div>
                         <div class="food_pic" style="background-image: url('https://res.cloudinary.com/dwreu1xik/image/upload/v1682441809/{{food.picture}}');"></div>
                     </div>

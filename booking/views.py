@@ -136,3 +136,8 @@ class Mybookings(View):
             }
             return HttpResponse(response.render(context, request))
 
+
+class Deletebooking(View):
+
+    def get(self, request, day, month, year, hour, min):
+        return HttpResponse(f'{request.user}, {day}/{month}/{year} {hour}:{min}')
