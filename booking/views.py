@@ -118,7 +118,13 @@ class Menu(View):
 class Mybookings(View):
 
     def get(self, request):
-
+        if request.user.is_superuser:
+            response = loader.get_template('mybooking.html')
+            booking = Booking.objects.all()
+            context = {
+                'bookings': booking
+            }
+            return HttpResponse(response.render(context, request))
         elif request.user.is_authenticated:
             response = loader.get_template('mybooking.html')
             booking = Booking.objects.filter(user=request.user)
