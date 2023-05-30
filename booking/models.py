@@ -7,20 +7,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-'''
-class User(models.Model):
-    firstname = models.CharField(max_length=50)
-    lastname = models.CharField(max_length=50)
-    username = models.CharField(max_length=100)
-    email = models.EmailField('email address', max_length=100, unique=True)
-    password = models.CharField(max_length=50)
-    date_joined = models.DateTimeField(default=timezone.now)
-
-
-class Staff(models.Model):
-    email = models.EmailField('email address', max_length=100, unique=True)
-'''
-
 class Food(models.Model):
 
     name = models.CharField(max_length=80)
@@ -37,11 +23,6 @@ class Food(models.Model):
     def __str__(self):
         return self.name
 
-    # def get_allergen_names(self):
-    #    return ",".join([str(allergen) for allergen in self.allergens.all()])
-
-    # allergen = models.CharField(max_length=200, blank=True, null=True, default=get_allergen_names)
-
 
 class Allergen(models.Model):
     allergen_name = models.CharField(max_length=25)
@@ -49,16 +30,6 @@ class Allergen(models.Model):
 
     def __str__(self):
         return self.allergen_name
-
-'''
-class Table(models.Model):
-    table_id = models.AutoField()
-    restaurant_name = models.CharField(max_length=30)
-    capacity = models.IntegerField()
-
-    #def __str__(self):
-    #    return self.restaurant_name
-'''
 
 class Capacity(models.Model):
     name = models.CharField(max_length=30, primary_key= True)

@@ -10,8 +10,3 @@ class ReservationForm(forms.Form):
 
     reservation_start = forms.DateTimeField(widget=forms.SelectDateWidget(), label="Start of Reservation")
     guests = forms.IntegerField(label="Number of Guests")
-
-
-class ReservationDeleteForm(forms.Form):
-
-    time = forms.DateTimeField()
