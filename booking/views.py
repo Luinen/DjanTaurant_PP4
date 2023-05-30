@@ -10,6 +10,7 @@ from datetime import timedelta
 from booking.models import Food, Capacity, Booking
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.urls import reverse
 
 # Create your views here.
 
@@ -104,17 +105,6 @@ def bookingCreate(request):
      #   print(form.cleaned_data["reservation_start"])
     #return HttpResponseRedirect("reservation/")
 
-'''
-def  get_form(request):
-    if request.method == "POST":
-        form = ReservationForm(request.POST)
-        if form.is_valid():
-            return HttpResponseRedirect("Thank You")
-    else:
-        form = ReservationForm()
-    return render(request, "reservation.html", {"form": form})
-'''
-
 class Menu(View):
 
     def get(self, request):
@@ -128,7 +118,8 @@ class Menu(View):
 class Mybookings(View):
 
     def get(self, request):
-        if request.user.is_authenticated:
+
+        elif request.user.is_authenticated:
             response = loader.get_template('mybooking.html')
             booking = Booking.objects.filter(user=request.user)
             context = {
@@ -137,7 +128,11 @@ class Mybookings(View):
             return HttpResponse(response.render(context, request))
 
 
+
 class Deletebooking(View):
 
     def get(self, request, day, month, year, hour, min):
-        return HttpResponse(f'{request.user}, {day}/{month}/{year} {hour}:{min}')
+        if request.user.is_authenticated:
+            bookingdt = dt(year=year, month=month, day=day, hour=hour, minute=min)
+            Booking.objects.filter(user=request.user, datetime=bookingdt).delete()
+            return HttpResponseRedirect(reverse('mybookings'))
