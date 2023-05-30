@@ -29,7 +29,9 @@
             <!-- Buttons -->  
 
             <div class="button_container">
-                <button>Menu</button>
+                <form action="{% url 'menu' %}">
+                     <button>Menu</button>
+                 </form>
                 <form action="{% url 'reservation' %}">
                      <button>Booking</button>
                  </form>

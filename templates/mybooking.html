@@ -12,20 +12,28 @@
 
         </section>
 
-        <!-- Food container -->
+        <!-- Booking container -->
 
         <section class="booking_container">
             {% for booking in bookings%}
-                    <div class="food_card">
-                        <div class="food_info">
+                    <div class="booking_card">
+                        <div class="booking_info">
+                            {% if user.is_superuser %}
                             <h2>{{booking.restaurant.name}}</h2>
-                            <p class="ingredients">{{booking.datetime}}</p>
+                            <p class="bookingdt">{{booking.datetime}}</p>
                             <h4>{{booking.guest_number}}/person(s)</h4>
-                            <button type="button">
+                            <button class="deleteBooking" type="button">
                             <a href="delete/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}">Delete</a>
                             </button>
+                            {% elif user.is_authenticated %}
+                            <h2>{{booking.restaurant.name}}</h2>
+                            <p class="bookingdt">{{booking.datetime}}</p>
+                            <h4>{{booking.guest_number}}/person(s)</h4>
+                            <button class="deleteBooking" type="button">
+                            <a href="delete/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}">Delete</a>
+                            </button>
+                            {% endif %}
                         </div>
-                        <div class="food_pic" style="background-image: url('https://res.cloudinary.com/dwreu1xik/image/upload/v1682441809/{{food.picture}}');"></div>
                     </div>
             {% endfor %}
         </section>

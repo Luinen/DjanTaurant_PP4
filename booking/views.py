@@ -33,9 +33,7 @@ class Reservation(View):
     response = loader.get_template('reservation.html')
     
     def get(self, request):
-        
         return HttpResponse(self.response.render(self.context, request))
-       # return render(request, "reservation.html")
     
     def post(self,request):
         form = ReservationForm(request.POST)
@@ -53,7 +51,6 @@ class Reservation(View):
 
             t = dt(reservation_year, reservation_month, reservation_day, reservation_hour, reservation_minutes)
             res_ontime = Booking.objects.filter(datetime__range= [t - timedelta(hours=2), t])
-            #res_ontime = Booking.objects.filter(datetime__range=[t, t + timedelta(hours=2)])
             print(res_ontime)
             if t < dt.now():
                 messages.info(request, "Nem Sikeres a foglalas")
@@ -67,7 +64,6 @@ class Reservation(View):
             if (total + guests) > restaurant.capacity:
                 messages.info(request, "Tul sokan vannak")
                 return HttpResponseRedirect("/reservation")
-            #messages.info(request, Booking.objects.get())
             b = Booking.objects.create(
                 user= user,
                 restaurant= restaurant,
@@ -101,9 +97,7 @@ def bookingCreate(request):
        
     else:
         return HttpResponse("No reservation made")
-        # return HttpResponse(f'Reservation Start:{reservation_year}/{reservation_month}/{reservation_day}, {reservation_hour}:{reservation_minutes},  {guests} Person(s)')
-     #   print(form.cleaned_data["reservation_start"])
-    #return HttpResponseRedirect("reservation/")
+
 
 class Menu(View):
 

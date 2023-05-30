@@ -46,4 +46,4 @@ class Booking(models.Model):
     guest_number = models.IntegerField()
 
     def __str__(self):
-        return self.user.username +' '+ str(self.guest_number) +' '+ self.datetime.strftime("%m/%d/%Y, %H:%M:%S")
+        return self.user.username +' '+ str(self.guest_number) +' '+ self.datetime.strftime("%d/%m/%Y, %H:%M:%S")
