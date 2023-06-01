@@ -28,6 +28,18 @@ header {
     background-image: url('../pictures/booking.jpg');
 }
 
+/* Messages */
+
+.header-messages {
+    background-color: rgb(0, 0, 0, .75);
+    color: white;
+    height: 40px;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 /* Nav bar */
 
 nav {

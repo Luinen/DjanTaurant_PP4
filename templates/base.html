@@ -15,14 +15,14 @@
 </head>
 
 <body>
-    {% include "messages.html" %}
+
     <header class="headerbg-index">
 
         <!-- Navigation bar-->
-
+        {% include "messages.html" %}
         <nav>
             <div class="nav-basic">
-                <mark>Restaurant</mark>
+                <mark>Djantaurant</mark>
                 <div id="nav-container">
                     <a href="{% url 'main' %}">Home</a>
                     <a href="{% url 'reservation' %}">Booking</a>
