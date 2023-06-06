@@ -1,9 +1,6 @@
-from django.shortcuts import render, redirect
-from django.views import generic
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from django.template import loader
-from django import forms
 from .forms import ReservationForm
 from datetime import datetime as dt
 from datetime import timedelta
@@ -50,7 +47,7 @@ class Reservation(View):
             user = User.objects.filter(username=request.user)[0]
 
             t = dt(reservation_year, reservation_month, reservation_day, reservation_hour, reservation_minutes)
-            res_ontime = Booking.objects.filter(datetime__range= [t - timedelta(hours=2), t])
+            res_ontime = Booking.objects.filter(datetime__range= [t - timedelta(hours=2), t + timedelta(hours=2)])
             print(res_ontime)
             if t < dt.now():
                 messages.info(request, "Nem Sikeres a foglalas")

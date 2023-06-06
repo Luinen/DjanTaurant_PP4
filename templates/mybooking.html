@@ -20,6 +20,7 @@
                         <div class="booking_info">
                             {% if user.is_superuser %}
                             <h2>{{booking.restaurant.name}}</h2>
+                            <h2>{{booking.user}}</h2>
                             <p class="bookingdt">{{booking.datetime}}</p>
                             <h4>{{booking.guest_number}}/person(s)</h4>
                             <button class="deleteBooking" type="button">
