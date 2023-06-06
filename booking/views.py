@@ -111,7 +111,11 @@ class Mybookings(View):
     def get(self, request):
         if request.user.is_superuser:
             response = loader.get_template('mybooking.html')
-            booking = Booking.objects.all()
+            order = request.GET.get("order_by")
+            if order == "user":
+                booking = Booking.objects.all().order_by("user")
+            else:
+                booking = Booking.objects.all().order_by("datetime")
             context = {
                 'bookings': booking
             }

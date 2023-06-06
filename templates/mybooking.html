@@ -15,6 +15,7 @@
         <!-- Booking container -->
 
         <section class="booking_container">
+
             {% for booking in bookings%}
                     <div class="booking_card">
                         <div class="booking_info">
@@ -37,6 +38,16 @@
                         </div>
                     </div>
             {% endfor %}
+            {% if user.is_superuser %}
+            <div>
+                <button class="deleteBooking" type="button">
+                    <a href="./?order_by=user">User</a>
+                </button>
+                <button class="deleteBooking" type="button">
+                    <a href="./?order_by=datetime">Datetime</a>
+                </button>
+            </div>
+            {% endif %}
         </section>
     </main>
 
