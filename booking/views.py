@@ -50,16 +50,16 @@ class Reservation(View):
             res_ontime = Booking.objects.filter(datetime__range= [t - timedelta(hours=2), t + timedelta(hours=2)])
             print(res_ontime)
             if t < dt.now():
-                messages.info(request, "Nem Sikeres a foglalas")
+                messages.info(request, "The reservation date is wrong.")
                 return HttpResponseRedirect("/reservation")
             if not request.user.is_authenticated:
-                messages.info(request, "Bejelentkezes szukseges")
+                messages.info(request, "Please log in")
                 return HttpResponseRedirect("/reservation")
             total = 0
             for i in res_ontime:
                 total += i.guest_number
             if (total + guests) > restaurant.capacity:
-                messages.info(request, "Tul sokan vannak")
+                messages.info(request, "Not enough seat for your reservation.")
                 return HttpResponseRedirect("/reservation")
             b = Booking.objects.create(
                 user= user,
@@ -69,11 +69,11 @@ class Reservation(View):
             )
             b.save()
             print(User.objects.all()[0])
-            messages.info(request, "Sikeres foglalas")
+            messages.info(request, "Successful booking.")
             return HttpResponseRedirect("/reservation")
         
         else:
-            messages.info(request, "Nem Sikerult")
+            messages.info(request, "Oops, something is wrong")
             return HttpResponse(self.response.render(self.context, request))
 
 

@@ -208,6 +208,10 @@ main .food_container .food_card .food_pic {
     color: red;
 }
 
+.booking_inst {
+    margin: 10px auto 20px 20px;
+}
+
 /* Footer */
 
 footer {
