@@ -129,11 +129,36 @@ class Mybookings(View):
             return HttpResponse(response.render(context, request))
 
 
+class Updatebooking(View):
+
+    def get(self, request, day, month, year, hour, min):
+        if request.user.is_authenticated:
+            bookingdt = dt(year=year, month=month, day=day, hour=hour, minute=min)
+            field = request.GET.get("field")
+            new_value = request.GET.get("new_value")
+            #print(field)
+            #print(new_value)
+            #print('//////////////////')
+            if field == "guest_number":
+                o = Booking.objects.filter(user=request.user, datetime=bookingdt)[0]
+                o.guest_number = int(new_value)
+                o.save()
+                print('UPDATED GUEST NUMBER')
+                print(o)
+            messages.info(request, f"Reservation updated. {bookingdt.strftime('%H:%M, %d/%m/%Y')}")
+            return HttpResponseRedirect(reverse('mybookings'))
+
 
 class Deletebooking(View):
 
     def get(self, request, day, month, year, hour, min):
         if request.user.is_authenticated:
             bookingdt = dt(year=year, month=month, day=day, hour=hour, minute=min)
-            Booking.objects.filter(user=request.user, datetime=bookingdt).delete()
+            if request.user.is_superuser:
+                user = User.objects.filter(username= request.GET.get("user"))[0]
+            else:
+                user = request.user
+            Booking.objects.filter(user= user, datetime=bookingdt).delete()
+            messages.info(request, f"Reservation deleted. {bookingdt.strftime('%H:%M, %d/%m/%Y')}")
             return HttpResponseRedirect(reverse('mybookings'))
+
