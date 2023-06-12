@@ -7,5 +7,5 @@ urlpatterns = [
     path('menu/', views.Menu.as_view(), name="menu"),
     path('showbookings/', views.Mybookings.as_view(), name="mybookings"),
     path('showbookings/delete/<int:day>/<int:month>/<int:year>/<int:hour>/<int:min>', views.Deletebooking.as_view(), name='deletebooking'),
-path('showbookings/update/<int:day>/<int:month>/<int:year>/<int:hour>/<int:min>', views.Updatebooking.as_view(), name='updatebooking')
+    path('showbookings/update/<int:day>/<int:month>/<int:year>/<int:hour>/<int:min>', views.Updatebooking.as_view(), name='updatebooking')
 ]

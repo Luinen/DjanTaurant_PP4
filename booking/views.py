@@ -143,8 +143,8 @@ class Updatebooking(View):
                 o = Booking.objects.filter(user=request.user, datetime=bookingdt)[0]
                 o.guest_number = int(new_value)
                 o.save()
-                print('UPDATED GUEST NUMBER')
-                print(o)
+                #print('UPDATED GUEST NUMBER')
+                #print(o)
             messages.info(request, f"Reservation updated. {bookingdt.strftime('%H:%M, %d/%m/%Y')}")
             return HttpResponseRedirect(reverse('mybookings'))
 

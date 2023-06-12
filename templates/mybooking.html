@@ -25,6 +25,9 @@
                             <p class="bookingdt">{{booking.datetime}}</p>
                             <h4>{{booking.guest_number}}/person(s)
                                 <button class="updateBooking" type="button">
+                                <a href="update/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}?field=guest_number&new_value={{booking.guest_number|add:'-1'}}">-</a>
+                                </button>
+                                <button class="updateBooking" type="button">
                                 <a href="update/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}?field=guest_number&new_value={{booking.guest_number|add:'1'}}">+</a>
                                 </button>
                             </h4>
@@ -39,6 +42,9 @@
                             <h2>{{booking.restaurant.name}}</h2>
                             <p class="bookingdt">{{booking.datetime}}</p>
                             <h4>{{booking.guest_number}}/person(s)
+                                <button class="updateBooking" type="button">
+                                <a href="update/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}?field=guest_number&new_value={{booking.guest_number|add:'-1'}}">-</a>
+                                </button>
                                 <button class="updateBooking" type="button">
                                 <a href="update/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}?field=guest_number&new_value={{booking.guest_number|add:'1'}}">+</a>
                                 </button>
