@@ -32,9 +32,11 @@
                 <form action="{% url 'menu' %}">
                      <button>Menu</button>
                  </form>
+                {% if user.is_authenticated %}
                 <form action="{% url 'reservation' %}">
                      <button>Booking</button>
                  </form>
+                {% endif %}
             </div>
         </section>
     </main>

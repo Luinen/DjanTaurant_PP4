@@ -25,7 +25,9 @@
                 <mark>Djantaurant</mark>
                 <div id="nav-container">
                     <a href="{% url 'main' %}">Home</a>
+                    {% if user.is_authenticated %}
                     <a href="{% url 'reservation' %}">Booking</a>
+                    {% endif %}
                     <a href="{% url 'menu' %}">Menu</a>
                     {% if user.is_authenticated %}
                     <a href="{% url 'mybookings' %}">My Booking</a>
