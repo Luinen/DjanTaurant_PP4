@@ -8,6 +8,8 @@ from booking.models import Food, Capacity, Booking
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse
+import json
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -124,7 +126,8 @@ class Mybookings(View):
             response = loader.get_template('mybooking.html')
             booking = Booking.objects.filter(user=request.user)
             context = {
-                'bookings': booking
+                'bookings': booking,
+                'strfdate': [x.datetime.strftime('%Y-%m-%d') for x in booking],
             }
             return HttpResponse(response.render(context, request))
 
@@ -145,8 +148,17 @@ class Updatebooking(View):
                 o.save()
                 #print('UPDATED GUEST NUMBER')
                 #print(o)
+            if field == "time":
+                o = Booking.objects.filter(user=request.user, datetime=bookingdt)[0]
             messages.info(request, f"Reservation updated. {bookingdt.strftime('%H:%M, %d/%m/%Y')}")
             return HttpResponseRedirect(reverse('mybookings'))
+
+    @csrf_exempt
+    def post(self, request):
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        print("post")
+        print(body)
 
 
 class Deletebooking(View):
