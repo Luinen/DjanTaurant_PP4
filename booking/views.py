@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from django.template import loader
-from .forms import ReservationForm
+from .forms import ReservationForm, ReservationUpdate
 from datetime import datetime as dt
 from datetime import timedelta
 from booking.models import Food, Capacity, Booking
@@ -110,26 +110,25 @@ class Menu(View):
 
 class Mybookings(View):
 
-    def get(self, request):
+    def context_maker(request):
+        context = {
+            "form": ReservationUpdate,
+        }
         if request.user.is_superuser:
-            response = loader.get_template('mybooking.html')
             order = request.GET.get("order_by")
             if order == "user":
                 booking = Booking.objects.all().order_by("user")
             else:
                 booking = Booking.objects.all().order_by("datetime")
-            context = {
-                'bookings': booking
-            }
-            return HttpResponse(response.render(context, request))
         elif request.user.is_authenticated:
-            response = loader.get_template('mybooking.html')
             booking = Booking.objects.filter(user=request.user)
-            context = {
-                'bookings': booking,
-                'strfdate': [x.datetime.strftime('%Y-%m-%d') for x in booking],
-            }
-            return HttpResponse(response.render(context, request))
+        context["bookings"]= booking
+        return context
+    def get(self, request):
+
+        context = Mybookings.context_maker(request)
+        response = loader.get_template("mybooking.html")
+        return HttpResponse(response.render(context, request))
 
 
 class Updatebooking(View):
@@ -139,26 +138,22 @@ class Updatebooking(View):
             bookingdt = dt(year=year, month=month, day=day, hour=hour, minute=min)
             field = request.GET.get("field")
             new_value = request.GET.get("new_value")
-            #print(field)
-            #print(new_value)
-            #print('//////////////////')
             if field == "guest_number":
                 o = Booking.objects.filter(user=request.user, datetime=bookingdt)[0]
                 o.guest_number = int(new_value)
                 o.save()
-                #print('UPDATED GUEST NUMBER')
-                #print(o)
             if field == "time":
                 o = Booking.objects.filter(user=request.user, datetime=bookingdt)[0]
             messages.info(request, f"Reservation updated. {bookingdt.strftime('%H:%M, %d/%m/%Y')}")
+            print("timeupdate")
             return HttpResponseRedirect(reverse('mybookings'))
 
-    @csrf_exempt
-    def post(self, request):
-        body_unicode = request.body.decode('utf-8')
-        body = json.loads(body_unicode)
-        print("post")
-        print(body)
+    #@csrf_exempt
+    #def post(self, request):
+     #   body_unicode = request.body.decode('utf-8')
+      #  body = json.loads(body_unicode)
+      #  print("post")
+      #  print(body)
 
 
 class Deletebooking(View):
