@@ -148,12 +148,16 @@ class Updatebooking(View):
             print("timeupdate")
             return HttpResponseRedirect(reverse('mybookings'))
 
-    #@csrf_exempt
-    #def post(self, request):
-     #   body_unicode = request.body.decode('utf-8')
-      #  body = json.loads(body_unicode)
-      #  print("post")
-      #  print(body)
+
+    def post(self, request, day, month, year, hour, min):
+        date = request.POST.get("date")
+        date = dt.strptime(date, '%Y-%m-%d')
+        bookingdt = dt(year, month, day, hour, day)
+        o = Booking.objects.filter(user=request.user)
+        print(request.user)
+        print(bookingdt)
+        print(o)
+        return HttpResponse(f"{date.year}")
 
 
 class Deletebooking(View):
