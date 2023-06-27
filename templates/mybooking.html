@@ -35,6 +35,9 @@
                             </h4>
                             <form action="update/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}" method="POST">
                                 {% csrf_token %}
+                                {% if user.is_superuser %}
+                                <input type="text" value="{{booking.user}}" name="user">
+                                {% endif %}
                                 <input type="date" id="start" value="2023-06-23" id="date" name="date">
                                 <input type="time" name="time" min="14:00" max="20:00" value="14:00">
                                 <input type="submit" value="Update">

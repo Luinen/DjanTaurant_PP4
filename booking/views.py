@@ -164,11 +164,11 @@ class Updatebooking(View):
         time = request.POST.get("time")
         t = dt.strptime(date1 +" "+ time, '%Y-%m-%d %H:%M')
         bookingdt = dt(year, month, day, hour, min)
-        o = Booking.objects.filter(user=request.user, datetime= bookingdt)[0]
-        print(request.user)
-        print(date1 +" "+ time)
-        print(t)
-        print(o)
+        if request.user.is_superuser:
+            user = User.objects.filter(username=request.POST.get("user"))[0]
+        else:
+            user = request.user
+        o = Booking.objects.filter(user=user, datetime= bookingdt)[0]
         res_ontime = Booking.objects.filter(datetime__range=[t - timedelta(hours=2), t + timedelta(hours=2)])
         if t < dt.now():
             messages.info(request, "The reservation date is wrong.")
