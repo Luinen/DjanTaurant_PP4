@@ -50,7 +50,6 @@ class Reservation(View):
 
             t = dt(reservation_year, reservation_month, reservation_day, reservation_hour, reservation_minutes)
             res_ontime = Booking.objects.filter(datetime__range= [t - timedelta(hours=2), t + timedelta(hours=2)])
-            print(res_ontime)
             if t < dt.now():
                 messages.info(request, "The reservation date is wrong.")
                 return HttpResponseRedirect("/reservation")
@@ -140,6 +139,17 @@ class Updatebooking(View):
             new_value = request.GET.get("new_value")
             if field == "guest_number":
                 o = Booking.objects.filter(user=request.user, datetime=bookingdt)[0]
+                res_ontime = Booking.objects.filter(datetime__range=[bookingdt - timedelta(hours=2), bookingdt + timedelta(hours=2)])
+                restaurant_name = 'Djantaurant'
+                restaurant = Capacity.objects.filter(name=restaurant_name)[0]
+                total = 0
+                guests = int(new_value)
+                for i in res_ontime:
+                    if i.user != request.user:
+                        total += i.guest_number
+                if (total + guests) > restaurant.capacity:
+                    messages.info(request, "Not enough seat for your reservation.")
+                    return HttpResponseRedirect("/showbookings")
                 o.guest_number = int(new_value)
                 o.save()
             if field == "time":
@@ -150,14 +160,35 @@ class Updatebooking(View):
 
 
     def post(self, request, day, month, year, hour, min):
-        date = request.POST.get("date")
-        date = dt.strptime(date, '%Y-%m-%d')
-        bookingdt = dt(year, month, day, hour, day)
-        o = Booking.objects.filter(user=request.user)
+        date1 = request.POST.get("date")
+        time = request.POST.get("time")
+        t = dt.strptime(date1 +" "+ time, '%Y-%m-%d %H:%M')
+        bookingdt = dt(year, month, day, hour, min)
+        o = Booking.objects.filter(user=request.user, datetime= bookingdt)[0]
         print(request.user)
-        print(bookingdt)
+        print(date1 +" "+ time)
+        print(t)
         print(o)
-        return HttpResponse(f"{date.year}")
+        res_ontime = Booking.objects.filter(datetime__range=[t - timedelta(hours=2), t + timedelta(hours=2)])
+        if t < dt.now():
+            messages.info(request, "The reservation date is wrong.")
+            return HttpResponseRedirect("/showbookings")
+        if not request.user.is_authenticated:
+            messages.info(request, "Please log in")
+            return HttpResponseRedirect("/showbookings")
+        restaurant_name = 'Djantaurant'
+        restaurant = Capacity.objects.filter(name=restaurant_name)[0]
+        total = 0
+        guests = o.guest_number
+        for i in res_ontime:
+            total += i.guest_number
+        if (total + guests) > restaurant.capacity:
+            messages.info(request, "Not enough seat for your reservation.")
+            return HttpResponseRedirect("/showbookings")
+        o.datetime = t
+        o.save()
+        messages.info(request, "Successful booking.")
+        return HttpResponseRedirect("/showbookings")
 
 
 class Deletebooking(View):
