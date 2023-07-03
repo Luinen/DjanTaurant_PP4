@@ -27,10 +27,18 @@
                             <p class="bookingdt">{{booking.datetime}}</p>
                             <h4>{{booking.guest_number}}/person(s)
                                 <button class="updateBooking" type="button">
-                                <a href="update/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}?field=guest_number&new_value={{booking.guest_number|add:'-1'}}">-</a>
+                                    {% if user.is_superuser %}
+                                    <a href="update/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}?field=guest_number&user={{booking.user}}&new_value={{booking.guest_number|add:'-1'}}">-</a>
+                                    {% else %}
+                                    <a href="update/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}?field=guest_number&new_value={{booking.guest_number|add:'-1'}}">-</a>
+                                    {% endif %}
                                 </button>
                                 <button class="updateBooking" type="button">
-                                <a href="update/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}?field=guest_number&new_value={{booking.guest_number|add:'1'}}">+</a>
+                                    {% if user.is_superuser %}
+                                    <a href="update/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}?field=guest_number&user={{booking.user}}&new_value={{booking.guest_number|add:'1'}}">+</a>
+                                    {% else %}
+                                    <a href="update/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}?field=guest_number&new_value={{booking.guest_number|add:'1'}}">+</a>
+                                    {% endif %}
                                 </button>
                             </h4>
                             <form action="update/{{booking.datetime.day}}/{{booking.datetime.month}}/{{booking.datetime.year}}/{{booking.datetime.hour}}/{{booking.datetime.minute}}" method="POST">
@@ -38,8 +46,8 @@
                                 {% if user.is_superuser %}
                                 <input type="text" value="{{booking.user}}" name="user">
                                 {% endif %}
-                                <input type="date" id="start" value="2023-06-23" id="date" name="date">
-                                <input type="time" name="time" min="14:00" max="20:00" value="14:00">
+                                <input type="date" id="start" value="2023-08-01" id="date" name="date">
+                                <input type="time" name="time" min="14:00" max="20:00" value="14:00" step="900">
                                 <input type="submit" value="Update">
                             </form>
                             <button class="deleteBooking" type="button">

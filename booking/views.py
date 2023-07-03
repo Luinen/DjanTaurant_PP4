@@ -137,15 +137,19 @@ class Updatebooking(View):
             bookingdt = dt(year=year, month=month, day=day, hour=hour, minute=min)
             field = request.GET.get("field")
             new_value = request.GET.get("new_value")
+            if request.user.is_superuser:
+                user = User.objects.filter(username=request.GET.get("user"))[0]
+            else:
+                user = request.user
             if field == "guest_number":
-                o = Booking.objects.filter(user=request.user, datetime=bookingdt)[0]
+                o = Booking.objects.filter(user=user, datetime=bookingdt)[0]
                 res_ontime = Booking.objects.filter(datetime__range=[bookingdt - timedelta(hours=2), bookingdt + timedelta(hours=2)])
                 restaurant_name = 'Djantaurant'
                 restaurant = Capacity.objects.filter(name=restaurant_name)[0]
                 total = 0
                 guests = int(new_value)
                 for i in res_ontime:
-                    if i.user != request.user:
+                    if i.user != user:
                         total += i.guest_number
                 if (total + guests) > restaurant.capacity:
                     messages.info(request, "Not enough seat for your reservation.")
